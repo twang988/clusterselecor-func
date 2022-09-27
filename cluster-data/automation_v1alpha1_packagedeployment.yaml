@@ -1,0 +1,17 @@
+apiVersion: automation.nephio.org/v1alpha1
+kind: PackageDeployment
+metadata:
+  name: aggregation-caching-dns
+spec:
+  selector:
+    matchLabels:
+      nephio.org/region: cn-wrcp-aiodx
+      nephio.org/site-type: aggregation
+  internalFunctions:
+    clusterSelector: wang5150753/clusterselector-func:1.0
+
+  namespace: caching-dns
+  packageRef:
+    repository: nephio-packages
+    packageName: coredns-caching-scaled
+    revision: v1

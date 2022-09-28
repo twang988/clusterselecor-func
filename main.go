@@ -13,10 +13,10 @@ func Run(rl *fn.ResourceList) (bool, error) {
 	for _, obj := range rl.Items {
 		if obj.IsGVK("automation.nephio.org", "v1alpha1", "PackageDeployment") {
 			obj.As(&pd)
+			continue
 		}
-
 	}
-	if pd.Spec.Selector.MatchLabels == nil {
+	if pd.Spec.Selector == nil {
 		return true, nil
 	}
 	//Select Cluster by label
